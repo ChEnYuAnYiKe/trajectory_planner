@@ -1,0 +1,34 @@
+<launch>
+    <node pkg="trajectory_planner" type="trajectory_planner" name="trajectory_planner_node" output="screen">
+        <param name="p_precision" value="0.1" type="double"/>
+        <!-- 无人车初始化位置 -->
+        <param name="robot_0_x" value="0.0" type="double"/>
+        <param name="robot_0_y" value="0.0" type="double"/>
+        <param name="robot_0_theta" value="0.0" type="double"/>
+
+        <param name="robot_1_x" value="0.0" type="double"/>
+        <param name="robot_1_y" value="0.0" type="double"/>
+        <param name="robot_1_theta" value="0.0" type="double"/>
+
+        <param name="robot_2_x" value="0.0" type="double"/>
+        <param name="robot_2_y" value="0.0" type="double"/>
+        <param name="robot_2_theta" value="0.0" type="double"/>
+
+        <param name="robot_3_x" value="0.0" type="double"/>
+        <param name="robot_3_y" value="0.0" type="double"/>
+        <param name="robot_3_theta" value="0.0" type="double"/>
+        <!-- 无人车里程计话题 -->
+        <remap from="~robot_0_odom" to="/robot_0/Odometry"/>
+        <remap from="~robot_1_odom" to="/robot_1/Odometry"/>
+        <remap from="~robot_2_odom" to="/robot_2/Odometry"/>
+        <remap from="~robot_3_odom" to="/robot_3/Odometry"/>
+        <!-- 无人车订阅的twist话题 -->
+        <remap from="~robot_0_cmd_vel" to="/robot_0/cmd_vel"/>
+        <remap from="~robot_1_cmd_vel" to="/robot_1/cmd_vel"/>
+        <remap from="~robot_2_cmd_vel" to="/robot_2/cmd_vel"/>
+        <remap from="~robot_3_cmd_vel" to="/robot_3/cmd_vel"/>
+
+
+    </node>
+
+</launch>
