@@ -79,8 +79,9 @@ void Turtlebot::PIDController() {
     regularizeAngle(theta_d);
     e_theta = theta_d - theta_;
     regularizeAngle(e_theta);
+	regularizeAngle(theta_target_);
 
-    if (getGoalPositionDistance() < p_precision_)
+	if (getGoalPositionDistance() < p_precision_)
     {
         e_theta = theta_target_ - theta_;
         regularizeAngle(e_theta);

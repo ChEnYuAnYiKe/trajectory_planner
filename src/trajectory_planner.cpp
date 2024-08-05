@@ -26,7 +26,7 @@ void TrajectoryPlanner::init(ros::NodeHandle& nh) {
 	getAllGoalPos();
 	runtime_timer_ = nh.createTimer(ros::Duration(d_t_), &TrajectoryPlanner::runCallback, this);
 
-	ROS_INFO("Trajectory Planner Initialized");
+	ROS_INFO("Trajectory Planner Initialized!");
 }
 
 void TrajectoryPlanner::initRobot(ros::NodeHandle& nh) {
@@ -71,7 +71,7 @@ void TrajectoryPlanner::runCallback(const ros::TimerEvent& e) {
 		publishCmd();
 		if (count == ROBOT_NUM) {
 			current_status_ = PLANNING;
-			ROS_INFO("All robots reached the initial position!");
+			ROS_INFO("All robots reached the init position, get into PLANNING mode!");
 		}else
 			count = 0;
 
