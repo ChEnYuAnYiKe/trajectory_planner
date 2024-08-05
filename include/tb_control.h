@@ -6,18 +6,19 @@
 
 class Turtlebot {
 public:
-	Turtlebot(int robotIDd);
+	Turtlebot(int robotID);
 	~Turtlebot();
 	void init(ros::NodeHandle& nh);
 	void publisher();
 	void odomSubCallback(const nav_msgs::Odometry::ConstPtr& msg);
-	double isGoalReached(double x_target, double y_target, double x, double y, double& dist);
-	void runOnce();
+    void getGoalPos(double x_target, double y_target, double theta_target);
+	double getGoalPositionDistance();
+	void PIDController();
 
-	int robotID;
-	bool initGoalReached_;
+	int robotID_;
+	bool isGoalReached_;
 	ros::Subscriber odom_sub_;
-	ros::Publisher vel_pub_;
+	double x_target_, y_target_, theta_target_;	
 
 	nav_msgs::Odometry curOdom_, twistOdom_;
 	geometry_msgs::Twist cmd_vel;
@@ -25,8 +26,7 @@ public:
 private:
 	// cur odom's x, y, theta(yaw)
 	double x_, y_, theta_;
-	double p_window_;
-	double p_precision_;
+	double p_precision_, o_precision_;
 	double controller_freqency_, d_t_;
 	double max_v_, min_v_, max_v_inc_;
 	double max_w_, min_w_, max_w_inc_;
@@ -36,7 +36,8 @@ private:
 
 	double e_v_, e_w_;
 	double i_v_, i_w_;
-	double target_x_, target_y_;
+
+    ros::Publisher vel_pub_;    
 
 	void regularizeAngle(double& angle);
 	double LinearPIDController(nav_msgs::Odometry& base_odometry, double b_x_d, double b_y_d);

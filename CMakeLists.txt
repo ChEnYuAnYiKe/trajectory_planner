@@ -139,6 +139,7 @@ include_directories(
 # # With catkin_make all packages are built within a single CMake context
 # # The recommended prefix ensures that target names across packages don't collide
 add_executable(trajectory_planner
+  src/trajectory_planner_node.cpp
   src/trajectory_planner.cpp
   src/tb_control.cpp)
 
