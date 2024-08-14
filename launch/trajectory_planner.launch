@@ -20,6 +20,8 @@
         <param name="k_w_i" value="0.000" type="double"/>
         <param name="k_w_d" value="0.0" type="double"/>
 
+        <param name="controller_frequency" value="50.0" type="double"/>
+
         <!-- <param name="k_theta" value="0.5" type="double"/> -->
         <!-- 无人车初始化位置 -->
         <param name="robot_0_x" value="0.0" type="double"/>
@@ -44,9 +46,9 @@
         <remap from="~robot_3_odom" to="/robot_3/Odometry"/>
         <!-- 无人车订阅的twist话题 -->
         <remap from="~robot_0_cmd_vel" to="/robot_0/cmd_vel"/>
-        <remap from="~robot_1_cmd_vel" to="/robot_1/cmd_vel"/>
-        <remap from="~robot_2_cmd_vel" to="/robot_2/cmd_vel"/>
-        <remap from="~robot_3_cmd_vel" to="/robot_3/cmd_vel"/>
+        <remap from="~robot_1_cmd_vel" to="/robot_3/cmd_vel"/>
+        <remap from="~robot_2_cmd_vel" to="/robot_4/cmd_vel"/>
+        <remap from="~robot_3_cmd_vel" to="/robot_5/cmd_vel"/>
 
     </node>
 </launch>
